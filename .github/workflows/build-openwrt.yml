@@ -104,7 +104,7 @@ jobs:
       id: package
       run: |
         cd openwrt
-        make defconfig
+        make oldconfig
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
@@ -181,7 +181,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.LEO_TOKEN }}
       with:
-        tag_name: ${{ steps.tag.outputs.release_tag }}    
+        tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
 
